@@ -53,6 +53,8 @@ public class Main {
                     .messages(Arrays.asList(systemMsg, userMsg))
                     .resultFormat(GenerationParam.ResultFormat.MESSAGE)
                     .build();
+            GenerationResult call = gen.call(param);
+
             return gen.call(param);
         }
         public static void main(String[] args) {

@@ -30,6 +30,7 @@ public enum BizScene {
 
     PASSWORD_UPDATE("PASSWORD_UPDATE", "修改密码"),
 
+    AI_CALL("AI_CALL", "AI调用"),
 
 
 
