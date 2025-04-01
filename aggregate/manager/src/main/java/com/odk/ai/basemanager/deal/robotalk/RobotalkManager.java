@@ -1,9 +1,8 @@
 package com.odk.ai.basemanager.deal.robotalk;
 
-import com.odk.ai.infra.api.TurboApi;
-import com.alibaba.dashscope.exception.ApiException;
-import com.alibaba.dashscope.exception.InputRequiredException;
-import com.alibaba.dashscope.exception.NoApiKeyException;
+import com.odk.ai.baseutil.enums.AiProviderEnum;
+import com.odk.ai.infra.api.AiService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +15,12 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class RobotalkManager {
 
-    private static final String DEFAULT_RESPONSE = "对不起，暂时无法提供服务...";
-
-    private final TurboApi turboApi;
-
-    public RobotalkManager(TurboApi turboApi) {
-        this.turboApi = turboApi;
-    }
+    private final AiService aiService;
 
     public String deal(String input) {
-        try {
-            return turboApi.callWithMessage(input);
-        } catch (ApiException | NoApiKeyException | InputRequiredException e) {
-            // 使用日志框架记录异常信息
-            log.error("An error occurred while calling the generation service: " + e.getMessage());
-        }
-        return DEFAULT_RESPONSE;
+        return aiService.chat(AiProviderEnum.DEEPSEEK, input);
     }
 }
