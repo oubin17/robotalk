@@ -1,5 +1,6 @@
 package com.odk.ai.baseutil.request.role;
 
+import com.odk.ai.baseutil.enums.AiProviderEnum;
 import com.odk.base.vo.request.BaseRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,4 +25,11 @@ public class RobotalkAskRequest extends BaseRequest {
      * 内容
      */
     private String content;
+
+    /**
+     * 模型:默认使用千问大模型
+     *
+     * {@link com.odk.ai.baseutil.enums.AiProviderEnum}
+     */
+    private String llm = AiProviderEnum.QWEN.getCode();
 }

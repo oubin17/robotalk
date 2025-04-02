@@ -1,6 +1,7 @@
 package com.odk.ai.baseutil.enums;
 
 import com.odk.base.enums.IEnum;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * AiProviderEnum
@@ -26,6 +27,18 @@ public enum AiProviderEnum implements IEnum {
     AiProviderEnum(String code, String description) {
         this.code = code;
         this.description = description;
+    }
+
+    public static AiProviderEnum getByCode(String code) {
+        if (StringUtils.isEmpty(code)) {
+            return null;
+        }
+        for (AiProviderEnum providerEnum : values()) {
+            if (providerEnum.code.equals(code)) {
+                return providerEnum;
+            }
+        }
+        return null;
     }
 
     @Override

@@ -20,7 +20,7 @@ public class RobotalkManager {
 
     private final AiService aiService;
 
-    public String deal(String input) {
-        return aiService.chat(AiProviderEnum.DEEPSEEK, input);
+    public String deal(String input, String llm) {
+        return aiService.chat(AiProviderEnum.getByCode(llm), input);
     }
 }
