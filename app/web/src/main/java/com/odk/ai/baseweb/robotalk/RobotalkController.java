@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping("/ask")
-public class RobotalkContorller {
-
+public class RobotalkController {
 
     private RobotalkApi robotalkApi;
 
